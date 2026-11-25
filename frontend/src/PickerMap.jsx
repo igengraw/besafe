@@ -1,8 +1,7 @@
 import { useEffect, useRef } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-
-const ALMATY = [43.238, 76.945]
+import { CENTER, TILE_URL, TILE_OPTIONS } from './mapConfig'
 
 // Click the map to place a pin, then drag it to adjust.
 // onChange receives { lat, lng } and must be a stable function (e.g. a setState).
@@ -10,11 +9,8 @@ export default function PickerMap({ onChange }) {
   const containerRef = useRef(null)
 
   useEffect(() => {
-    const map = L.map(containerRef.current).setView(ALMATY, 12)
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; OpenStreetMap contributors',
-    }).addTo(map)
+    const map = L.map(containerRef.current).setView(CENTER, 12)
+    L.tileLayer(TILE_URL, TILE_OPTIONS).addTo(map)
 
     const icon = L.divIcon({
       className: 'pin',

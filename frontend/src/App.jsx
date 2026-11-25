@@ -1,64 +1,52 @@
-import { useEffect, useState } from 'react'
-import { supabase } from './supabaseClient'
-import MapView from './MapView'
-import ReportForm from './ReportForm'
-import { label } from './labels'
+import { useRoute } from './router'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import HomePage from './pages/HomePage'
+import MapPage from './pages/MapPage'
+import ReportPage from './pages/ReportPage'
+import HelpPage from './pages/HelpPage'
+import GetHelpPage from './pages/GetHelpPage'
+import PrivacyPage from './pages/PrivacyPage'
+import AboutPage from './pages/AboutPage'
+import HowItWorksPage from './pages/HowItWorksPage'
+import DangerPage from './pages/DangerPage'
+import StatsPage from './pages/StatsPage'
 
 export default function App() {
-  const [view, setView] = useState('home') // 'home' | 'report'
-  const [reports, setReports] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const { path, params } = useRoute()
 
-  useEffect(() => {
-    async function loadReports() {
-      const { data, error } = await supabase
-        .from('reports')
-        .select('id, lat, lng, category, who, context, time_of_day, incident_date')
-        .eq('status', 'approved')
-        .order('incident_date', { ascending: false })
+  if (path === '/danger') return <DangerPage />
 
-      if (error) setError(error.message)
-      else setReports(data)
-      setLoading(false)
+  const page = (() => {
+    switch (path) {
+      case '/map':
+        return <MapPage />
+      case '/report':
+        return <ReportPage initialArea={params.get('area')} />
+      case '/help':
+        return <HelpPage />
+      case '/get-help':
+        return <GetHelpPage />
+      case '/privacy':
+        return <PrivacyPage />
+      case '/about':
+        return <AboutPage />
+      case '/how-it-works':
+        return <HowItWorksPage />
+      case '/stats':
+        return <StatsPage />
+      default:
+        return <HomePage />
     }
-    loadReports()
-  }, [])
+  })()
+
+  const flush = path === '/map' || path === '/report'
 
   return (
-    <div className="page">
-      <header className="hero">
-        <h1>BeSafe</h1>
-        <p>Report anonymously. See where action is needed.</p>
-        <nav className="nav">
-          <button className={view === 'home' ? '' : 'secondary'} onClick={() => setView('home')}>Map</button>
-          <button className={view === 'report' ? '' : 'secondary'} onClick={() => setView('report')}>Report an incident</button>
-        </nav>
-      </header>
-
-      <main>
-        {view === 'report' ? (
-          <ReportForm />
-        ) : (
-          <>
-            {loading && <p>Loading...</p>}
-            {error && <p className="error">Error: {error}</p>}
-            <MapView reports={reports} />
-            <h2>Published reports ({reports.length})</h2>
-            <ul className="list">
-              {reports.map((r) => (
-                <li key={r.id} className="card">
-                  <strong>{label(r.category)}</strong>
-                  <span>{label(r.context)}</span>
-                  <span>{label(r.time_of_day)}</span>
-                  <span>{label(r.who)}</span>
-                  <span>{r.incident_date}</span>
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
-      </main>
+    <div className="app">
+      <Header path={path} />
+      <main className={flush ? 'app-main app-main--flush' : 'app-main'}>{page}</main>
+      {!flush && <Footer />}
     </div>
   )
 }

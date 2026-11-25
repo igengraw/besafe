@@ -8,6 +8,7 @@ Course project: General Project, 4th year.
 
 - Interactive map (Leaflet + OpenStreetMap) showing approved reports
 - Anonymous report form with a draggable pin, category and optional details
+- Statistics page with counts by category, context, time of day and who, plus home page numbers
 - Database with Row Level Security: the public can only read approved reports and add new ones
 - Privacy trigger in the database: new reports are forced to `pending`, coordinates are shifted by a random 100-300 m, and only the day of creation is stored
 
@@ -19,22 +20,42 @@ Course project: General Project, 4th year.
 
 ## Project structure
 
+Backend and frontend are separate parts of the repository.
+
 ```
 besafe/
-  database/        SQL files for Supabase
-    01_schema.sql  table, trigger, security policies
-    02_seed.sql    fictional test data
-  frontend/        React app
+  supabase/                 BACKEND (database and server code)
+    migrations/             table, trigger, security policies, statistics function
+    functions/              Edge Functions (captcha, from step 5)
+    docs/
+      api-contract.md       what the frontend can call
+    seed.sql                fictional test data
+    .env.example            backend secrets template (never commit .env)
+  frontend/                 FRONTEND (React interface only)
     src/
+      api/                  the only place that talks to the backend
+      ...                   components, map, form, stats, styles
+    .env.example            public keys template
   README.md
 ```
+
+### Who owns what
+
+| Area | Folder | Owner |
+|---|---|---|
+| Database, security rules, Edge Functions | `supabase/` | Backend |
+| Interface, map, form, translations | `frontend/` | Frontend |
+| Contract between the two | `supabase/docs/api-contract.md` | Both agree before changing it |
+
+Rules: the frontend imports Supabase only inside `frontend/src/api/`. Secret keys
+(service role, captcha secret) exist only in `supabase/.env` and never in `frontend/`.
 
 ## Getting started
 
 ### 1. Database
 
 1. Create a project at [supabase.com](https://supabase.com).
-2. Open SQL Editor and run `database/01_schema.sql`, then `database/02_seed.sql`.
+2. Open SQL Editor and run `supabase/migrations/20260101000000_init_reports.sql`, then `20260101000001_stats.sql`, then `supabase/seed.sql`.
 3. Copy the Project URL and the publishable (anon) key from the project's API settings.
 
 ### 2. Frontend
@@ -80,7 +101,7 @@ Open the address shown in the terminal (usually http://localhost:5173).
 - [x] 3. Map with markers
 - [x] 4. Report form with draggable pin
 - [ ] 5. Captcha through an Edge Function, close direct inserts
-- [ ] 6. Statistics page and home page numbers
+- [x] 6. Statistics page and home page numbers
 - [ ] 7. English, Russian and Kazakh
 - [ ] 8. Moderator login and approval panel
 

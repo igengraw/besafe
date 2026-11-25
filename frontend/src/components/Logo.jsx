@@ -1,0 +1,22 @@
+export default function Logo({ size = 36 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 40 40"
+      role="img"
+      aria-label="Besafe shield"
+      focusable="false"
+    >
+      <path
+        d="M20 2.5 34.5 8v11.2c0 8.7-5.9 15-14.5 18.3C11.4 34.2 5.5 27.9 5.5 19.2V8L20 2.5Z"
+        fill="#5D6B6B"
+      />
+      <path
+        d="M20 10.2c-3.2 0-5.8 2.6-5.8 5.7 0 4.2 5.8 9.4 5.8 9.4s5.8-5.2 5.8-9.4c0-3.1-2.6-5.7-5.8-5.7Z"
+        fill="#B0D7D8"
+      />
+      <circle cx="20" cy="15.8" r="2.2" fill="#5D6B6B" />
+    </svg>
+  )
+}

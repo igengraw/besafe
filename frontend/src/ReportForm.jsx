@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { supabase } from './supabaseClient'
+import { createReport } from './api/reports'
 import PickerMap from './PickerMap'
 import { label } from './labels'
 import { CATEGORIES, WHO, CONTEXTS, MOTIVATIONS, TIMES } from './options'
@@ -31,25 +31,23 @@ export default function ReportForm() {
     if (!position || !values.category) return
     setStatus('sending')
 
-    // No .select() here: pending reports are hidden from the public by RLS
-    const { error } = await supabase.from('reports').insert({
-      lat: position.lat,
-      lng: position.lng,
-      category: values.category,
-      who: values.who || null,
-      context: values.context || null,
-      motivation: values.motivation || null,
-      time_of_day: values.time_of_day || null,
-      incident_date: values.incident_date,
-      description: values.description.trim() || null,
-      lang: 'en',
-    })
-
-    if (error) {
-      setError(error.message)
-      setStatus('error')
-    } else {
+    try {
+      await createReport({
+        lat: position.lat,
+        lng: position.lng,
+        category: values.category,
+        who: values.who || null,
+        context: values.context || null,
+        motivation: values.motivation || null,
+        time_of_day: values.time_of_day || null,
+        incident_date: values.incident_date,
+        description: values.description.trim() || null,
+        lang: 'en',
+      })
       setStatus('sent')
+    } catch (err) {
+      setError(err.message)
+      setStatus('error')
     }
   }
 

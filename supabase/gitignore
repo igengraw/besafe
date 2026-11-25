@@ -1,0 +1,6 @@
+# Backend secrets and CLI files, never commit these
+.env
+.env.*
+!.env.example
+.branches
+.temp
