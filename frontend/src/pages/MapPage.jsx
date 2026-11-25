@@ -207,10 +207,6 @@ export default function MapPage() {
             </span>
           </label>
         </div>
-
-        <p className="map-note">
-          Areas are generalized. Exact points are never shown. Sample data.
-        </p>
       </aside>
 
       <div className="map-canvas">
@@ -279,14 +275,7 @@ export default function MapPage() {
           </div>
         )}
 
-        {loading && <p className="map-hint">Loading approved reports…</p>}
-        {error && <p className="map-hint">Could not load reports: {error}</p>}
-        {!loading && !error && (
-          <p className="map-hint">
-            {filtered.length} approved reports in this view. Positions are shifted by 100–300 m
-            before saving.
-          </p>
-        )}
+
       </div>
     </div>
   )

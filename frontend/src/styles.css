@@ -4,25 +4,28 @@
    ============================================================ */
 
 :root {
-  --bg: #f1f7f7;
-  --surface: #ffffff;
-  --surface-soft: #d5e5e5;
-  --surface-tint: #e7f0f0;
-  --line: #dde6e6;
-  --line-strong: #cfdcdc;
-  --ink: #263231;
-  --ink-soft: #3f4c4b;
-  --muted: #6e7c7b;
-  --slate: #5d6b6b;
-  --slate-deep: #4c5958;
-  --teal: #b0d7d8;
-  --pink: #f7cbca;
-  --pink-ink: #8e4b47;
-  --warm: #ddd3d3;
-  --danger: #a8544e;
+  --bg: #F1F7F7;
+  --surface: #F1F7F7;
+  --surface-soft: #D5E5E5;
+  --surface-tint: #DDD3D3;
+  --line: #DDD3D3;
+  --line-strong: #B0D7D8;
+
+  --ink: #5D6B6B;
+  --ink-soft: #5D6B6B;
+  --muted: #5D6B6B;
+
+  --slate: #5D6B6B;
+  --slate-deep: #5D6B6B;
+  --teal: #B0D7D8;
+  --pink: #F7CBCA;
+  --pink-ink: #5D6B6B;
+  --warm: #DDD3D3;
+  --danger: #5D6B6B;
+
   --radius: 18px;
   --radius-lg: 26px;
-  --shadow: 0 20px 50px rgba(38, 50, 49, 0.08);
+  --shadow: 0 20px 50px rgba(93, 107, 107, 0.10);
   --font: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
@@ -209,7 +212,7 @@ ul {
 
 .btn-primary {
   background: var(--slate);
-  color: #fff;
+  color: #F1F7F7;
 }
 
 .btn-primary:hover {
@@ -233,7 +236,7 @@ ul {
 }
 
 .btn-quiet:hover {
-  background: #f2bcbb;
+  background: #F7CBCA;
 }
 
 .btn-block {
@@ -263,7 +266,7 @@ ul {
 .chip.is-active {
   background: var(--slate);
   border-color: var(--slate);
-  color: #fff;
+  color: #F1F7F7;
 }
 
 .chip-row {
@@ -328,7 +331,7 @@ ul {
   min-height: 520px;
   border-radius: 30px;
   overflow: hidden;
-  background: #3f4b4a;
+  background: #5D6B6B;
   box-shadow: var(--shadow);
 }
 
@@ -377,7 +380,7 @@ ul {
   right: 22px;
   background: rgba(241, 247, 247, 0.14);
   border: 1px solid rgba(241, 247, 247, 0.22);
-  color: #eaf2f2;
+  color: #F1F7F7;
   border-radius: 999px;
   padding: 7px 15px;
   font-size: 12px;
@@ -392,7 +395,7 @@ ul {
   border-radius: 999px;
   padding: 12px 20px;
   font-size: 13px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 30px rgba(93, 107, 107, 0.2);
 }
 
 .step-grid {
@@ -557,7 +560,7 @@ ul {
 .danger-card {
   grid-row: span 2;
   background: var(--slate);
-  color: #fff;
+  color: #F1F7F7;
   border-radius: 24px;
   padding: 34px;
 }
@@ -574,7 +577,7 @@ ul {
   border-radius: 14px;
   padding: 16px 20px;
   margin-top: 14px;
-  color: #fff;
+  color: #F1F7F7;
 }
 
 .call-row:hover {
@@ -814,7 +817,7 @@ ul {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #fff;
+  background: #F1F7F7;
   transition: 0.2s ease;
 }
 
@@ -835,7 +838,7 @@ ul {
 .map-canvas {
   position: relative;
   min-height: 640px;
-  background: #3f4b4a;
+  background: #5D6B6B;
 }
 
 .leaflet-host {
@@ -846,7 +849,7 @@ ul {
 .map-canvas .leaflet-container {
   height: 100%;
   width: 100%;
-  background: #3f4b4a;
+  background: #5D6B6B;
   font-family: var(--font);
 }
 
@@ -866,7 +869,7 @@ ul {
   font-weight: 600;
   color: var(--ink);
   white-space: nowrap;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 10px 24px rgba(93, 107, 107, 0.28);
 }
 
 .district-label::before {
@@ -882,7 +885,7 @@ ul {
   background: var(--surface);
   border-radius: 22px;
   padding: 26px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 24px 60px rgba(93, 107, 107, 0.2);
 }
 
 .district-card h2 {
@@ -970,7 +973,7 @@ ul {
   z-index: 600;
   display: grid;
   place-items: center;
-  background: rgba(63, 75, 74, 0.35);
+  background: rgba(93, 107, 107, 0.35);
 }
 
 .map-empty-card {
@@ -1083,7 +1086,7 @@ ul {
 .stepper-item.is-done .stepper-dot {
   background: var(--slate);
   border-color: var(--slate);
-  color: #fff;
+  color: #F1F7F7;
 }
 
 .report-card {
@@ -1162,7 +1165,7 @@ ul {
 
 .danger-mini {
   background: var(--slate);
-  color: #fff;
+  color: #F1F7F7;
   border-radius: 20px;
   padding: 24px 26px;
 }
@@ -1192,7 +1195,7 @@ ul {
 }
 
 .area-map {
-  background: #3f4b4a;
+  background: #5D6B6B;
   border-radius: 18px;
   padding: 18px;
   display: grid;
@@ -1205,7 +1208,7 @@ ul {
 .area-tile {
   border: 1px solid rgba(176, 215, 216, 0.22);
   background: rgba(176, 215, 216, 0.08);
-  color: #eaf2f2;
+  color: #F1F7F7;
   border-radius: 12px;
   padding: 4px;
   font-size: 11.5px;
@@ -1391,7 +1394,7 @@ ul {
   justify-content: space-between;
   gap: 16px;
   background: var(--pink);
-  color: #6f3936;
+  color: #5D6B6B;
   border-radius: 12px;
   padding: 14px 16px;
   font-size: 13.5px;
@@ -1400,8 +1403,8 @@ ul {
 
 .warning button {
   flex: none;
-  background: #7e3f3b;
-  color: #fff;
+  background: #5D6B6B;
+  color: #F1F7F7;
   border: 0;
   border-radius: 10px;
   padding: 9px 16px;
@@ -1452,7 +1455,7 @@ ul {
   height: 96px;
   border-radius: 50%;
   background: var(--slate);
-  color: #fff;
+  color: #F1F7F7;
   display: grid;
   place-items: center;
   font-size: 40px;
@@ -1515,7 +1518,7 @@ ul {
 .help-banner {
   display: block;
   background: var(--slate);
-  color: #fff;
+  color: #F1F7F7;
   border-radius: 18px;
   padding: 26px 30px;
   margin-top: 24px;
@@ -1586,7 +1589,7 @@ ul {
 .danger-page {
   min-height: 100vh;
   background: var(--slate);
-  color: #fff;
+  color: #F1F7F7;
   padding: 44px 0 70px;
 }
 
@@ -1620,7 +1623,7 @@ ul {
 }
 
 .danger-inner > p {
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(241, 247, 247, 0.82);
   font-size: 17px;
 }
 
@@ -1629,7 +1632,7 @@ ul {
   align-items: center;
   justify-content: space-between;
   background: var(--pink);
-  color: #6f3936;
+  color: #5D6B6B;
   border-radius: 18px;
   padding: 20px 30px;
   margin-top: 18px;
@@ -1649,14 +1652,14 @@ ul {
 }
 
 .danger-actions .btn-secondary {
-  background: #fff;
+  background: #F1F7F7;
 }
 
 .link-quiet {
   background: none;
   border: 0;
   padding: 0;
-  color: #fff;
+  color: #F1F7F7;
   font: inherit;
   cursor: pointer;
 }
@@ -1746,7 +1749,7 @@ ul {
   background: var(--surface);
   color: var(--ink);
   border-radius: 14px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 16px 40px rgba(93, 107, 107, 0.25);
 }
 
 .leaflet-popup-content {
@@ -1756,13 +1759,13 @@ ul {
 }
 
 .leaflet-control-attribution {
-  background: rgba(38, 50, 49, 0.65) !important;
-  color: #cfdcdc !important;
+  background: rgba(93, 107, 107, 0.65) !important;
+  color: #DDD3D3 !important;
   font-size: 10px;
 }
 
 .leaflet-control-attribution a {
-  color: #e7f0f0 !important;
+  color: #B0D7D8 !important;
 }
 
 .leaflet-bar a {
